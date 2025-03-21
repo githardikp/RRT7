@@ -2,7 +2,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { View, Text } from 'react-native';
 import HomeScreen from './src/screens/HomeScreen';
-import ProfileScreen from './src/screens/ProfileScreen';
 import SettingScreen from './src/screens/SettingScreen';
 const Drawer = createDrawerNavigator();
 
