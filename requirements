@@ -1,0 +1,37 @@
+Core Task management:
+1. Create tasks
+2. Modify tasks
+3. Delete tasks
+4. Compelete tasks
+5. Add due date in tasks 
+6. tasks will have tags
+
+Organization features:
+5. Assign tasks to custom categories or tags
+6. Sort tasks by due date or tags
+7. Search through the tasks for specific tasks
+
+Time Management:
+8. Assign dates and times for task completion
+9. Calendar view
+10. Reminders
+11. Recurring tasks
+
+User Experience:
+12. Intuitive Interface: Clean and user friendly design 
+13. Drag and drop: Reorder tasks manually
+14. Dark/Light Mode: Support for both display modes
+15. Responsive Design: Works well on different screen sizes
+
+Data Management:
+16. Persistence: tasks remain after app closure
+17. Data validation to prevent invalid tasks
+
+Technical requirements:
+18. works without internet connection
+
+User Management (Later):
+User Accounts: Registration and login functionality
+Profile Management: Edit user information and preferences
+Data Synchronization: Sync tasks across multiple devices
+Cloud Backup: Automatic backup to cloud storage
