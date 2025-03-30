@@ -4,64 +4,27 @@ import Animated, { useAnimatedKeyboard, useAnimatedStyle } from "react-native-re
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SafeAreaView } from "react-native-safe-area-context";
 // import { AntDesign } from '@expo/vector-icons'; // Make sure to install expo/vector-icons if not already installed
-
+import TaskInput, {useTaskInput} from "../components/TaskInput";
+import TaskList from "../components/TaskList";
 type storageValue={
     key: string,
     data: string
 }
 
 const HomeScreen = ()=>{
-    const [task, setTask] = useState<storageValue[]>([]);
-    const [inputText, setInputText] = useState<string>(''); 
-
-    const handleOnSubmit = ()=>{
-        // makes sure no empty tasks are there in the list
-        if(inputText===''){
-            return;
-        }
-        const dateNow = new Date();
-        const id = dateNow.getTime().toString();
-        setTask(task.concat([{key: id, data: inputText}]));
-        setInputText(''); // Clear input after adding task
-    }
+    const {task, inputText, handleOnSubmit, setInputText} = useTaskInput(); 
 
     return(
         <View style={styles.container}>
-            <View style={styles.inputWithButton}>
-                <TextInput 
-                    placeholder='Enter the task' 
-                    style={styles.inputBox}
-                    autoFocus={false}
-                    keyboardType='default'
-                    placeholderTextColor='#888'
-                    cursorColor={'black'}
-                    value={inputText}
-                    onChangeText={setInputText}
-                />
-                <Pressable
-                    onPress={handleOnSubmit}
-                    style={({pressed}) => [
-                        styles.addButton,
-                        pressed ? styles.buttonPressed : null
-                    ]}
-                    android_ripple={{color: '#0056b3'}}
-                >
-                    <Text style={styles.buttonText}>Add Task</Text>
-                    {/* <AntDesign name="plus" size={18} color="white" /> */}
-                </Pressable>
-            </View>
-            
+
+            <TaskInput
+                inputText={inputText}
+                handleOnSubmit={handleOnSubmit}
+                setInputText={setInputText}
+            />
+
             <SafeAreaView style={styles.listContainer}>
-                <FlatList
-                    data={task}
-                    renderItem={({item}) => (
-                        <View style={styles.taskItem}>
-                            <Text style={styles.taskText}>{item.data}</Text>
-                        </View>
-                    )}
-                    keyExtractor={(item) => item.key}
-                    contentContainerStyle={styles.flatlistContent}
-                />
+                <TaskList taskThatNeedsToBeDisplayed={task}/>
             </SafeAreaView>
         </View>
     )
@@ -122,6 +85,7 @@ const styles = StyleSheet.create({
     },
     listContainer: {
         flex: 1,
+        // backgroundColor: 'red',
     },
     flatlistContent: {
         paddingBottom: 20,
