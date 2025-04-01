@@ -50,7 +50,13 @@ const useTaskInput = () => {
         setInputText(''); // Clear input after adding task
     }
 
-    return {task, inputText, handleOnSubmit, setInputText};
+    const handleOnDelete = (key: string) => {
+        const newTask = task.filter(task => task.key !== key);  
+        setTask(newTask);
+        saveToStorage(newTask);
+    }
+
+    return {task, inputText, handleOnSubmit, setInputText, setTask, saveToStorage, handleOnDelete};
 }
 
 const TaskInput = ({inputText, handleOnSubmit, setInputText}: any) => {

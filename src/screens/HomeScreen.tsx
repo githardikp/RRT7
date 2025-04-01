@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput, Pressable, FlatList } from "react-na
 import Animated, { useAnimatedKeyboard, useAnimatedStyle } from "react-native-reanimated";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SafeAreaView } from "react-native-safe-area-context";
-// import { AntDesign } from '@expo/vector-icons'; // Make sure to install expo/vector-icons if not already installed
+import { AntDesign } from '@expo/vector-icons';
 import TaskInput, {useTaskInput} from "../components/TaskInput";
 import TaskList from "../components/TaskList";
 type storageValue={
@@ -12,7 +12,7 @@ type storageValue={
 }
 
 const HomeScreen = ()=>{
-    const {task, inputText, handleOnSubmit, setInputText} = useTaskInput(); 
+    const {task, inputText, handleOnSubmit, setInputText, handleOnDelete} = useTaskInput(); 
 
     return(
         <View style={styles.container}>
@@ -24,7 +24,10 @@ const HomeScreen = ()=>{
             />
 
             <SafeAreaView style={styles.listContainer}>
-                <TaskList taskThatNeedsToBeDisplayed={task}/>
+                <TaskList 
+                    taskThatNeedsToBeDisplayed={task}
+                    idcDeleteIt={handleOnDelete}
+                />
             </SafeAreaView>
         </View>
     )

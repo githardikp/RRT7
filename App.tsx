@@ -22,8 +22,7 @@ function MyDrawer() {
         {/* <Drawer.Screen name="Profile" component={ProfileScreen} /> */}
         <Drawer.Screen 
           name="Settings" 
-          component={SettingScreen} 
-          options={{drawerActiveTintColor: 'red'}}  
+          component={SettingScreen}   
         />
       </Drawer.Navigator>
     </NavigationContainer>
